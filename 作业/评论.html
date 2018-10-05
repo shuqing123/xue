@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #menu{
+            width:300px;
+            margin:0 auto
+        }
+        #txt{
+            width:280px;
+            height:200px;
+            resize:none;
+        }
+        #comment{
+            list-style-type:none;
+            width:300px;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+<div id="menu">
+    <textarea id="txt"></textarea><br>
+    <button id="btn">提交</button>
+</div>
+<ul id="comment"></ul>
+<script>
+    let oTxt=document.getElementById("txt");
+    let oBtn=document.getElementById("btn");
+    let oComment=document.getElementById("comment");
+    oBtn.onclick=function(){
+        let val=oTxt.value;
+        oComment.innerHTML+="<li>"+val+"<li>";
+        oTxt.value="";
+    }
+
+</script>
+
+</body>
+</html>

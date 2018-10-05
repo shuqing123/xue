@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="潭州教育-阿飞老师">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+            #wrap{
+                position:relative;
+                margin:20px auto 0;
+                width:658px;
+                height:411px;
+            }
+            .list li{
+                position:absolute;
+                display:none;
+                //top:0;
+            }
+            .list .show{
+                display:block;
+            }
+            #describe .dec{
+                position:absolute;
+                width:100%;
+                height:20px;
+                background-color:rgba(0,0,0,.5);
+                color:#fff;
+                text-align:center;
+            }
+            #describe .dec2{
+                bottom:0;
+            }
+            #btn li{
+                position:absolute;
+                top:0;
+                bottom:0;
+                width:40px;
+                height:20px;
+                margin:auto;
+                background-color:rgba(0,0,0,.5);
+                color:#fff;
+                text-align:center;
+                line-height:20px;
+                cursor:pointer;
+            }
+            #btn .left{
+                left:0;
+            }
+            #btn .right{
+                right:0;
+            }
+            #tab{
+                position:absolute;
+                left:0;
+                right:0;
+                bottom:-45px;
+                width:150px;
+                height:30px;
+                margin:auto;
+            }
+            #tab li{
+                float:left;
+                width:60px;
+                height:30px;
+                margin-left:10px;
+                background-color:rgba(0,0,0,.5);
+                color:#fff;
+                text-align:center;
+                line-height:30px;
+                font-size:12px;
+                cursor:pointer;
+            }
+            #tab .active{
+                background-color:blue;
+            }
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <ul class="list">
+                <li class="show"><a href="#"><img src="images/1.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/3.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/4.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/5.jpg" alt=""></a></li>
+            </ul>
+            <div id="describe">
+                <p class="dec1 dec"><span>1</span>/5</p>
+                <p class="dec2 dec">这是图片的描述</p>
+            </div>
+            <ul id="btn">
+                <li class="left"> < </li>
+                <li class="right"> > </li>
+            </ul>
+            <ul id="tab">
+                <li class="active">单边切换</li>
+                <li>循环切换</li>
+            </ul>
+        </div>
+        <script>
+            let oList=document.querySelectorAll(".list li"),
+                //aDescribe=document.querySelectorAll("#describe p"),
+                oDec1=document.querySelectorAll(".dec1 span"),
+                oDec2=document.getElementsByClassName("dec2"),
+                aeerText=[
+                    "这是图片的描述",
+                    "222",
+                    "333",
+                    "444",
+                    "555"
+                ],
+                oBtn=document.querySelectorAll("#btn li"),
+                aTab=document.querySelectorAll("#tab li"),
+                cut=true;
+            let index=0;//让浏览器知道是哪张图片
+            let len=oList.length;
+            //图片上左边按钮
+            oBtn[0].onclick=function(){
+                oList[index].className="";
+                index--;
+                if( index<0 ){//直到最前一页再判断
+                    if( cut ){
+                        index=0;
+                    }else {
+                        index=len-1;
+                    };
+                }
+                oList[index].className="show";
+                oDec1[0].innerHTML=index+1;
+                oDec2[0].innerHTML=aeerText[index];
+            }
+            //图片上右边按钮
+            oBtn[1].onclick=function(){
+                oList[index].className="";
+                index++;
+                if( index>len-1 ){//直到最后一页再判断
+                    if( cut ){
+                        index=len-1;
+                    }else {
+                        index=0;
+                    };
+                }
+                // if( index>len-1 ){
+                //     index=len-1;
+                // };
+                oList[index].className="show";
+                oDec1[0].innerHTML=index+1;
+                oDec2[0].innerHTML=aeerText[index];
+            }
+            //单边切换
+            aTab[0].onclick=function () {
+                aTab[1].className="";
+                aTab[0].className="active";
+                cut=true;
+            };
+            //循环切换
+            aTab[1].onclick=function () {
+                aTab[0].className="";
+                aTab[1].className="active";
+                cut=false;
+            }
+
+            //console.log(oDec1);
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
