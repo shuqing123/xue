@@ -32,9 +32,21 @@
         
         <script>
             let oWrap=document.getElementById("wrap");
-            for (let i = 0; i < 9; i++) {
-                oWrap.innerHTML+=`<span>1</span>`;
-                oWrap.innerHTML+="<br>";
+            for (let i = 1; i < 10; i++) {
+                let HTML="";
+                for (let j = 1; j <i+1; j++) {
+                    HTML+=`<span>${j}*${i}=${i*j}</span>`;
+                }
+                //oWrap.innerHTML+=`<span>1</span>`;
+                oWrap.innerHTML+=HTML+"<br>";
+            }
+            for (let i = 9; i >0; i--) {
+                let HTML="";
+                for (let j = 1; j <i+1; j++) {
+                    HTML+=`<span>${j}*${i}=${i*j}</span>`;
+                }
+                //oWrap.innerHTML+=`<span>1</span>`;
+                oWrap.innerHTML+=HTML+"<br>";
             }
         </script>
     </body>
