@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="潭州教育-阿飞老师">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+            #wrap ul li p,#wrap ul li input,#wrap ul li button{
+                display:none;
+            }
+            #wrap ul li p,#wrap ul li .btnx{
+                display:inline;
+            }
+            #wrap ul li {
+                padding:5px;
+                border-bottom:1px solid red;
+                line-height:20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <ul>
+                <li>
+                    <p>可编辑的按钮</p>
+                    < input type="text" value="可编辑的按钮">
+                    <button class="btnx">修改</button>
+                    <button class="btnq">确定</button>
+                </li>
+                <li>
+                    <p>可编辑的按钮</p>
+                    < input type="text" value="可编辑的按钮">
+                    <button class="btnx">修改</button>
+                    <button class="btnq">确定</button>
+                </li>
+                <li>
+                    <p>可编辑的按钮</p>
+                    < input type="text" value="可编辑的按钮">
+                    <button class="btnx">修改</button>
+                    <button class="btnq">确定</button>
+                </li>
+                <li>
+                    <p>可编辑的按钮</p>
+                    < input type="text" value="可编辑的按钮">
+                    <button class="btnx">修改</button>
+                    <button class="btnq">确定</button>
+                </li>
+            </ul>
+        </div>
+        
+        <script>
+             let aP=document.getElementsByTagName("p"),
+                 aInput=document.getElementsByTagName("input"),
+                 aBtnx=document.getElementsByClassName("btnx"),
+                 aBtnq=document.getElementsByClassName("btnq");
+            //let aLi=document.querySelectorAll("#wrap ul li")
+             len=aP.length;
+             function xclick(i){
+                 aP[i].style.display="none";
+                 aBtnx[i].style.display="none";
+                 aInput[i].style.display="inline";
+                 aBtnq[i].style.display="inline";
+                 //console.log(this);
+             }
+             function qclick(i){
+                 aP[i].style.display="inline";
+                 aBtnx[i].style.display="inline";
+                 aInput[i].style.display="none";
+                 aBtnq[i].style.display="none";
+                 aP[i].innerHTML=aInput[i].value;
+             }
+             for(let i=0 ;i<len;i++){
+                 aBtnx[i].onclick=function(){
+                     xclick(i)
+                 };
+                 aBtnq[i].onclick=function(){
+                     qclick(i)
+                 };
+             }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
