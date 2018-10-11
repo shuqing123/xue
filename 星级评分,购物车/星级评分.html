@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="潭州教育-阿飞老师">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+            #wrap{
+                width:350px;
+                margin:20px auto 0;
+            }
+            #wrap span{
+                float:left;
+                padding-top:20px;
+                color:red;
+            }
+            #wrap ul li{
+                float:left;
+                width:20px;
+                height:20px;
+                margin-top:20px;
+                background-image:url("images/star.png");
+            }
+            #wrap ul .show{
+                background-position:center 19px;
+            }
+            #wrap p{
+                float:left;
+                width:120px;
+                height:80px;
+                border:1px dotted #000;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <span>星级评分:</span>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <p>提示:请认真给当前文章打分</p>
+        </div>
+        
+        <script>
+            let oSp=document.querySelector("#wrap span"),
+                aLi=document.querySelectorAll("#wrap ul li"),
+                oP=document.querySelector("#wrap p"),
+                len=aLi.length;
+            let index=-1;
+            let oUl=document.querySelectorAll("#wrap ul");
+            let aTxt=[
+                "提示:请认真给当前文章打分",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+            ];
+            for(let i=0;i<len;i++){
+                aLi[i].onmouseenter=function(){
+                    for(let j=0;j<len;j++){
+                        aLi[j].className=j<=i?"show":"";
+                    }
+                    oP.innerHTML=aTxt[i+1]
+                    // for(let j=0;j<=i;j++) {
+                    //     oLi[j].className = "show"
+                    // }
+                    // for(let j=i+1;j<len;j++) {
+                    //     oLi[j].className = ""
+                    // }
+                };
+                aLi[i].onclick=function(){
+                    index=i
+                };
+            }
+            oUl[0].onmouseleave=function(){
+                for(let i=0;i<len;i++){
+                    aLi[i].className=i<=index?"show":"";
+                }
+                oP.innerHTML=aTxt[index+1]
+            }
+            console.log(oUl);
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

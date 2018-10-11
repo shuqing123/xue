@@ -15,6 +15,7 @@
                 position:relative;
                 width:820px;
                 margin:20px auto 0;
+                user-select: none;
             }
             #wrap .imglist{
                 position:relative;
@@ -92,46 +93,54 @@
         </div>
         
         <script>
-            let aImgLis=document.querySelectorAll("#wrap .imglist li"),
-                aBtnLis=document.querySelectorAll("#wrap .btnlist li"),
-                index=0;
-            let len=aImgLis.length;
-            let oDec1=document.getElementsByClassName("dec1"),
-                oDec2=document.getElementsByClassName("dec2");
-            for(let i=0;i<len;i++){
-                aBtnLis[i].onclick=function(){
-                    if(i!==index){
-                        aBtnLis[index].className="";
-                        aImgLis[index].className="";
-                        aBtnLis[i].className="active";
-                        index=i;
-                        aImgLis[index].className="show";
-                    }
+            (function () {
+                let aImgLis = document.querySelectorAll("#wrap .imglist li"),
+                    aBtnLis = document.querySelectorAll("#wrap .btnlist li"),
+                    index = 0;
+                let len = aImgLis.length;
+                let oDec1 = document.getElementsByClassName("dec1"),
+                    oDec2 = document.getElementsByClassName("dec2");
+                // function f() {
+                //     aBtnLis[index].className="";
+                //     aImgLis[index].className="";
+                // }
+                // function x(){
+                //     aBtnLis[index].className="active";
+                //     aImgLis[index].className="show";
+                // }
+                function f(x) {
+                    aBtnLis[index].className = "";
+                    aImgLis[index].className = "";
+                    index = x;
+                    aBtnLis[index].className = "active";
+                    aImgLis[index].className = "show";
+                }
 
-                    //index=i
-                    //alert(i)
+                for (let i = 0; i < len; i++) {
+                    aBtnLis[i].onclick = function () {
+                        if (i === index) return;
+                        f(i)
+                    }
                 }
-            }
-            oDec1[0].onclick=function(){
-                aImgLis[index].className="";
-                aBtnLis[index].className="";
-                index--;
-                if( index<0 ){
-                    index=len-1;
+                oDec1[0].onclick = function () {//左按钮
+                    let x = index;
+                    x--;
+                    if (x < 0) {
+                        x = len - 1;
+                    }
+                    f(x);
+                };
+                oDec2[0].onclick = function () {//右按钮
+                    aBtnLis[index].className = "";
+                    aImgLis[index].className = "";
+                    index++;
+                    if (index > len - 1) {
+                        index = 0;
+                    }
+                    aBtnLis[index].className = "active";
+                    aImgLis[index].className = "show";
                 }
-                aImgLis[index].className="show";
-                aBtnLis[index].className="active";
-            };
-            oDec2[0].onclick=function(){
-                aImgLis[index].className="";
-                aBtnLis[index].className="";
-                index++;
-                if( index>len-1 ){
-                    index=0;
-                }
-                aImgLis[index].className="show";
-                aBtnLis[index].className="active";
-            }
+            })();
                // console.log(aImgLis);
         </script>
     </body>
