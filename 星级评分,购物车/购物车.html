@@ -51,6 +51,15 @@
             #wrap tr td div{
                 padding-left:75px;
             }
+            #wrap .agg{
+                height:50px;
+                padding-left:600px;
+                margin-top:20px;
+                background-color:#cc3366;
+            }
+            #wrap .agg p{
+                float:left;
+            }
         </style>
     </head>
     <body>
@@ -67,54 +76,121 @@
                     <td>8</td>
                     <td>
                         <div>
-                            <button>-</button>
+                            <button class="min">-</button>
                             <span>0</span>
-                            <button>+</button>
+                            <button class="add">+</button>
                         </div>
                     </td>
-                    <td>0</td>
+                    <td class="he">0</td>
                 </tr>
                 <tr>
                     <td><img src="images/shop2.jpg" alt=""></td>
                     <td>10</td>
                     <td>
                         <div>
-                            <button>-</button>
+                            <button class="min">-</button>
                             <span>0</span>
-                            <button>+</button>
+                            <button class="add">+</button>
                         </div>
                     </td>
-                    <td>0</td>
+                    <td class="he">0</td>
                 </tr>
                 <tr>
                     <td><img src="images/shop3.jpg" alt=""></td>
                     <td>12.5</td>
                     <td>
                         <div>
-                            <button>-</button>
+                            <button class="min">-</button>
                             <span>0</span>
-                            <button>+</button>
+                            <button class="add">+</button>
                         </div>
                     </td>
-                    <td>0</td>
+                    <td class="he">0</td>
                 </tr>
                 <tr>
                     <td><img src="images/shop4.jpg" alt=""></td>
                     <td>23</td>
                     <td>
                         <div>
-                            <button>-</button>
+                            <button class="min">-</button>
                             <span>0</span>
-                            <button>+</button>
+                            <button class="add">+</button>
                         </div>
                     </td>
-                    <td>0</td>
+                    <td class="he">0</td>
                 </tr>
             </table>
+            <div class="agg">
+                <p>已选中商品:<span id="geshu">0</span>个</p>
+                <p>合计费用<span id="feiyong">0</span>¥</p>
+            </div>
         </div>
         
         <script>
-            
+            let date=[
+                {
+                    id:1,
+                    danjia:8,
+                    num:0
+                },
+                {
+                    id:1,
+                    danjia:10,
+                    num:0
+                },
+                {
+                    id:1,
+                    danjia:12.5,
+                    num:0
+                },
+                {
+                    id:1,
+                    danjia:23,
+                    num:0
+                },
+            ],
+                aAdd=document.getElementsByClassName("add"),
+                aMin=document.getElementsByClassName("min"),
+                len=aAdd.length,
+                index=0,
+                aSpan=document.querySelectorAll("#wrap tr span"),
+                aHe=document.querySelectorAll("#wrap tr .he"),
+                oGeshu=document.getElementById("geshu"),
+                oFeiyong=document.getElementById("feiyong")
+            ;
+            for(let i=0;i<len;i++){
+                aAdd[i].onclick=function() {
+                    date[i].num++
+                    aSpan[i].innerHTML = date[i].num;
+                    aHe[i].innerHTML=(date[i].num)*(date[i].danjia);
+                    let shu=0,he=0;
+                    for(let i=0;i<len;i++){
+                        shu+=date[i].num;
+                        he+=(date[i].num)*(date[i].danjia)
+                    }
+                    oGeshu.innerHTML=`${shu}`;
+                    oFeiyong.innerHTML=`${he}`;
+                }
+            }
+            for(let i=0;i<len;i++){
+                aMin[i].onclick=function() {
+                    date[i].num--
+                    if( date[i].num<0){
+                        date[i].num=0
+                    }
+                    aSpan[i].innerHTML = date[i].num;
+                    aHe[i].innerHTML=(date[i].num)*(date[i].danjia);
+                    let shu=0,he=0;
+                    for(let i=0;i<len;i++){
+                        shu+=date[i].num;
+                        he+=(date[i].num)*(date[i].danjia)
+                    }
+                    oGeshu.innerHTML=`${shu}`;
+                    oFeiyong.innerHTML=`${he}`;
+                }
+            }
+
+            //console.log(date[0].sum);
         </script>
     </body>
 </html>

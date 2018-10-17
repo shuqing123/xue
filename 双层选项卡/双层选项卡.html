@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="潭州教育-阿飞老师">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+            #wrap{
+                position:relative;
+                width:500px;
+                margin:20px auto 0;
+                user-select: none;
+            }
+            #wrap .leftbtn li{
+                width:100px;
+                margin-bottom:1px;
+                line-height:30px;
+                background-color:#000;
+                color:#fff;
+                text-align:center;
+                font-size:14px;
+                cursor:pointer;
+            }
+            #wrap .leftbtn li.active{
+                background-color:#ff6600;
+            }
+            #wrap div{
+                display:none;
+                position:absolute;
+                top:0;
+                right:0;
+                width:326px;
+                height:204px;
+            }
+            #wrap div.show{
+                display:block;
+            }
+            #wrap div ul.imglist li{
+                display:none;
+                position:absolute;
+                width:100%;
+                height:100%;
+
+            }
+            #wrap div ul.imglist li.onimg{
+                display:block;
+            }
+            #wrap div ul.rightbtn{
+                position:absolute;
+                left:0;
+                bottom:0;
+                margin-left:10px;
+                margin-bottom:5px;
+            }
+            #wrap div ul.rightbtn li{
+                float:left;
+                width:30px;
+                margin-right:1px;
+                background-color:#000;
+                line-height:30px;
+                color:#fff;
+                text-align:center;
+                font-size:14px;
+                cursor:pointer;
+            }
+            #wrap div ul.rightbtn li.on{
+                background-color:#ff6600;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <ul class="leftbtn">
+                <li class="active">豪车</li>
+                <li>美味</li>
+                <li>美女风景</li>
+            </ul>
+            <div class="show">
+                <ul class="imglist">
+                    <li class="onimg"><img src="images/1.jpg" alt=""></li>
+                    <li><img src="images/2.jpg" alt=""></li>
+                    <li><img src="images/3.jpg" alt=""></li>
+                    <li><img src="images/4.jpg" alt=""></li>
+                </ul>
+                <ul class="rightbtn">
+                    <li class="on">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="imglist">
+                    <li class="onimg"><img src="images/m1.jpg" alt=""></li>
+                    <li><img src="images/m2.jpg" alt=""></li>
+                    <li><img src="images/m3.jpg" alt=""></li>
+                    <li><img src="images/m4.jpg" alt=""></li>
+                    <li><img src="images/m5.jpg" alt=""></li>
+                </ul>
+                <ul class="rightbtn">
+                    <li class="on">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="imglist">
+                    <li class="onimg"><img src="images/s1.jpg" alt=""></li>
+                    <li><img src="images/s2.jpg" alt=""></li>
+                    <li><img src="images/s3.jpg" alt=""></li>
+                    <li><img src="images/s4.jpg" alt=""></li>
+                    <li><img src="images/s5.jpg" alt=""></li>
+                </ul>
+                <ul class="rightbtn">
+                    <li class="on">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </div>
+        </div>
+        
+        <script>
+            let aLeftbtn=document.querySelectorAll(".leftbtn li"),
+                aDiv=document.querySelectorAll("#wrap div"),
+                len=aLeftbtn.length,
+                index=0
+            ;
+            for(let i=0;i<len;i++){
+                aLeftbtn[i].onclick=function(){
+                    if(i===index)return;
+                    aDiv[index].className="";
+                    aLeftbtn[index].className="";
+                    index=i;
+                    aDiv[index].className="show";
+                    aLeftbtn[index].className="active";
+                }
+                let aImglist=aDiv[i].querySelectorAll(".imglist li"),
+                    aRightbtn=aDiv[i].querySelectorAll(".rightbtn li"),
+                    len1=aRightbtn.length,
+                    index1=0;
+
+                for(let j=0;j<len1;j++){
+                    aRightbtn[j].onclick=function(){
+                        if(j===index1)return;
+                        aRightbtn[index1].className="";
+                        aImglist[index1].className="";
+                        index1=j;
+                        aRightbtn[index1].className="on";
+                        aImglist[index1].className="onimg";
+                        //alert(i)
+                    }
+                }
+
+                //console.log(len1);
+            }
+            // for(let i=0;i<len1;i++){
+            //     let
+                // aHaochebtn[i].onclick=function(){
+                //     if(i===index)return;
+                //     aHaochebtn[index].className="";
+                //     aHaoche[index].className="";
+                //     index=i;
+                //     aHaochebtn[i].className="on";
+                //     aHaoche[i].className="onimg";
+                // }
+            //}
+            //console.log(aHaoche);
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
