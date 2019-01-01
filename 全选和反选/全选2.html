@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述">
+    <meta name="author" content="潭州教育-阿飞老师">
+    <style>
+        body{font-family: "Microsoft YaHei",serif;}
+        body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+        ol,ul,li{margin:0;padding:0;list-style:none;}
+        img{border:none;}
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <input type="checkbox" id="box1"><label for="box1">朱雀</label>
+        <input type="checkbox" id="box2"><label for="box2">心艾</label>
+        <input type="checkbox" id="box3"><label for="box3">发发</label>
+        <input type="checkbox" id="box4"><label for="box4">七七</label>
+        <input type="checkbox" id="box5"><label for="box5">岚岚</label>
+        <input type="checkbox" id="box6"><label for="box6">艾米</label>
+        <input type="checkbox" id="box7"><label for="box7">丫丫</label>
+        <input type="checkbox" id="box8"><label for="box8">风屿</label>
+    </div>
+    <div>
+        <input type="checkbox" id="box9"><label for="box9">全选</label>
+    </div>
+
+
+    <script>
+        let aInp=document.querySelectorAll("#wrap input"),
+            oBtn=document.getElementById("box9"),
+            len=aInp.length,
+            num=0
+        ;
+        oBtn.onchange=function(){
+            if(this.checked){
+                for(let i=0;i<len;i++){
+                    aInp[i].checked=true;
+                }
+                num=len;
+            }else{
+                for(let i=0;i<len;i++){
+                    aInp[i].checked=false;
+                }
+                num=0;
+            }
+        };
+        for(let j=0;j<len;j++){
+            aInp[j].onchange=function(){
+                if(this.checked){
+                    num++
+                }else{
+                    num--
+                }
+                oBtn.checked=num===len;
+            }
+        }
+        // let bool=true
+        // for(let j=0;j<len;j++){
+        //     if(!aInp[j].checked){
+        //         bool=false;
+        //         break;
+        //     }
+        //     oBtn.checked=bool
+        // }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

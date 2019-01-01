@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="潭州教育-阿飞老师">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+            #wrap{
+                overflow:hidden;
+                position:relative;
+                width:820px;
+                height:372px;
+                margin:20px auto 0;
+                user-select: none;
+            }
+            #wrap .imglist{
+                position:absolute;
+                left:-820px;
+                width:1000%;
+                height:340px;
+                transition:.5s;
+            }
+            #wrap .imglist.on{
+                transition:0s;
+            }
+            #wrap .imglist li{
+                float:left;
+                width:10%;
+                height:10%;
+            }
+            .btnlist{
+                position:absolute;
+                bottom:2px;
+                width:100%;
+                height:30px;
+            }
+            .btnlist li{
+                float:left;
+                width:20%;
+                border-bottom:2px solid #e3e2e2;
+                background-color:#e3e2e2;
+                line-height:30px;
+                text-align:center;
+                cursor:pointer;
+            }
+            .btnlist .active{
+                border-color:#cea861;
+                background-color:#f7f6f6;
+                color:#cea861;
+            }
+            .dec span{
+                position:absolute;
+                top:0;
+                bottom:0;
+                width:50px;
+                height:30px;
+                margin:auto;
+                background-color:rgba(255,255,255,.5);
+                font-size:20px;
+                text-align:center;
+                line-height:30px;
+                cursor:pointer;
+            }
+            .dec .dec1{
+                left:0;
+            }
+            .dec .dec2{
+                right:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <ul class="imglist">
+                <li><a href=""><img src="img/5.jpg" alt=""></a></li>
+
+                <li><a href=""><img src="img/1.jpg" alt=""></a></li>
+                <li><a href=""><img src="img/2.jpg" alt=""></a></li>
+                <li><a href=""><img src="img/3.jpg" alt=""></a></li>
+                <li><a href=""><img src="img/4.jpg" alt=""></a></li>
+                <li><a href=""><img src="img/5.jpg" alt=""></a></li>
+                <li><a href=""><img src="img/1.jpg" alt=""></a></li>
+
+            </ul>
+            <ul class="btnlist">
+                <li class="active">李青的神龙图腾</li>
+                <li>全球总决赛通行证</li>
+                <li>冠军掠夺者卡兹克</li>
+                <li>英雄荣耀出征</li>
+                <li>星海浩荡无畏扬帆</li>
+            </ul>
+            <div class="dec">
+                <span class="dec1"> < </span>
+                <span class="dec2"> > </span>
+            </div>
+        </div>
+        
+        <script>
+            (function () {
+                let aBtn=document.querySelectorAll("#wrap .btnlist li"),
+                    oWrap=document.getElementById("wrap"),
+                    oImg=document.getElementsByClassName("imglist"),
+                    len=aBtn.length,
+                    index=0,
+                    aDec=document.querySelectorAll("#wrap .dec span"),
+                    aImg=document.querySelectorAll("#wrap .imglist li"),
+                    ilen=aImg.length
+                ;
+                // for(let i=0;i<len;i++){
+                //     aBtn[i].onclick=function () {
+                //         aBtn[index].classList.remove("active");
+                //         aBtn[i].classList.add("active");
+                //         oImg[0].style.left=-820+(i*-820)+"px";
+                //         index=i
+                //     }
+                // }
+                function change(in0) {
+                    oImg[0].classList.remove("on")
+                    oImg[0].style.left="-"+(in0+1)*820+"px";
+                    if(in0>len-1){
+                        setTimeout(function () {
+                            oImg[0].classList.add("on")
+                            oImg[0].style.left=-820+"px";
+                        },500)
+
+                        in0=0
+                    }else if(in0<0){
+                        setTimeout(function () {
+                            oImg[0].classList.add("on");
+                            oImg[0].style.left="-"+(ilen-2)*820+"px";
+                        },500)
+
+                        in0=len-1;
+                    }
+
+
+                    //aBtn
+                    aBtn[index].classList.remove("active");
+                    index=in0
+                    aBtn[index].classList.add("active");
+
+                }
+                //鼠标移入事件
+                [...aBtn].forEach((ele,ind) => {
+                    ele.onclick = function () {
+                        change(ind)
+                        }
+                    }
+                );
+                //左右按钮事件
+                [...aDec].forEach((ele,ind) => {
+                    ele.onclick = function () {
+                        change(ind?index+1:index-1)
+                    }
+                });
+
+
+
+                let timer=setInterval(function () {
+                    change(index+1)
+                },3000)
+                oWrap.onmouseenter=function () {
+                    clearTimeout(timer)
+                }
+                oWrap.onmouseleave=function () {
+                    timer=setInterval(function () {
+                        change(index+1)
+                    },3000)
+                }
+                // console.log(timer);
+
+
+            })()
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

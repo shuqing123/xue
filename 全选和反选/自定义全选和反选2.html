@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="潭州教育-阿飞老师">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+            #wrap{
+                width:300px;
+                margin:50px auto 0;
+                padding:20px 0 50px;
+                border:1px solid #bbb;
+                border-radius:10px;
+            }
+            #wrap .list li{
+                padding-left:70px;
+                line-height:50px;
+                background:url("images/ckbg1.jpg") no-repeat 10px center;
+                cursor:pointer;
+            }
+            #wrap .list li.show{
+                background:url("images/ckbg2.jpg") no-repeat 10px center;
+                padding-left:50px;
+            }
+            #wrap div p{
+                float:left;
+                line-height:50px;
+            }
+            #wrap div p.all{
+                padding-left:50px;
+                background:url("images/ckbg1.jpg") no-repeat 25px center;
+            }
+            #wrap div p.all.show{
+                background:url("images/ckbg2.jpg") no-repeat 25px center;
+            }
+            #wrap div p.fan{
+                padding-left:70px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <ul class="list">
+                <!--<li class="show">项目1</li>-->
+                <!--<li>项目2</li>-->
+            </ul>
+            <div>
+                <p class="all">全选</p>
+                <p class="fan">反选</p>
+            </div>
+        </div>
+        
+        <script>
+            (function(data){
+                let oList=document.getElementsByClassName("list"),
+                    len=data.length,
+                    aLi=oList[0].getElementsByTagName("li"),
+                    num=0,
+                    oAll=document.getElementsByClassName("all"),
+                    oFan=document.getElementsByClassName("fan"),
+                    color=[
+                        "#222",
+                        "#555",
+                        "#888",
+                        "#bbb"
+                    ]
+                ;
+                for(let i=0;i<len;i++){
+                    oList[0].innerHTML+=`<li style="background-color:${color[i%4]}">${data[i].txt}</li>`
+                };
+                for(let i=0;i<len;i++){
+                    aLi[i].onclick=function () {
+                        this.classList.toggle("show");
+                        if(this.classList.contains("show")){
+                            num++
+                        }else{
+                            num--
+                        }
+                        if(num===len){
+                            oAll[0].classList.add("show")
+                        }else {
+                            oAll[0].classList.remove("show")
+                        }
+                        //console.log(num);
+                    }
+                };
+                oAll[0].onclick=function () {
+                    this.classList.toggle("show")
+                    if( this.classList.contains("show") ){
+                        for(let i=0;i<len;i++){
+                            aLi[i].classList.add("show")
+                        }
+                        num=len;
+                    }else{
+                        for(let i=0;i<len;i++){
+                            aLi[i].classList.remove("show")
+                        }
+                        num=0;
+                    }
+                }
+                oFan[0].onclick=function () {
+                    for(let i=0;i<len;i++){
+                        aLi[i].classList.toggle("show")
+                    }
+                    num=len-num
+                    //console.log(num);
+
+
+                }
+
+
+                //console.log(aLi);
+            })(
+                [
+                    {
+                        txt:"朱雀"
+                    },
+                    {
+                        txt:"心艾"
+                    },
+                    {
+                        txt:"发发"
+                    },
+                    {
+                        txt:"七七"
+                    },
+                    {
+                        txt:"岚岚"
+                    },
+                    {
+                        txt:"艾米"
+                    },
+                    {
+                        txt:"丫丫"
+                    },
+                    {
+                        txt:"风屿"
+                    }
+                ]
+            )
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
